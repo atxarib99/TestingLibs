@@ -184,6 +184,7 @@ public class XYSeriesDemo extends ApplicationFrame implements ChartMouseListener
     @Override
     public void chartMouseClicked(ChartMouseEvent cme) {
         //create a static cursor that isnt cleared every time
+        Toast.makeToast(this, "This is a sorta long one.", Toast.DURATION_MEDIUM);
     }
 
     @Override

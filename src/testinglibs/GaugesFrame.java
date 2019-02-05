@@ -6,10 +6,7 @@
 package testinglibs;
 
 import eu.hansolo.steelseries.gauges.Radial;
-import eu.hansolo.steelseries.tools.ThresholdType;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 
 /**
@@ -153,7 +150,7 @@ public class GaugesFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(gauge.getValue() <= 10) {
-            gauge.setValueAnimated(90);
+            gauge.setValueAnimated(15);
         }
         else {
             gauge.setValueAnimated(10);
