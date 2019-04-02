@@ -19,6 +19,7 @@ public class Toast extends JFrame {
         FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
         Font font = new Font("Lucida Grande", Font.PLAIN, 13);
         int textwidth = (int)(font.getStringBounds(message, frc).getWidth());
+        int textheight = (int)(font.getStringBounds(message, frc).getHeight());
 
         // make the background transparent 
         window.setBackground(new Color(0, 0, 0, 0));
@@ -51,7 +52,7 @@ public class Toast extends JFrame {
         };
 
         window.add(panel);
-        window.setSize(300, 100);
+        window.setSize(textwidth+35, textheight+25);
         //get middle of page, lean left if neccesary
         int xLocation = (int) (parent.getX() + parent.getWidth() / 2);
         //move start location over by half the toast window so toast is in middle
@@ -65,7 +66,6 @@ public class Toast extends JFrame {
 
         //set location
         window.setLocation(xLocation, yLocation);
-
 
         Thread thread = new Thread(() -> {
             window.setVisible(true);

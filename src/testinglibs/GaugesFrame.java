@@ -5,7 +5,8 @@
  */
 package testinglibs;
 
-import eu.hansolo.steelseries.gauges.Radial;
+
+import eu.hansolo.steelseries.gauges.*;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -20,21 +21,31 @@ public class GaugesFrame extends javax.swing.JFrame {
      */
     
     //create Radial object save as global so we can modify in other places
-    Radial gauge;
+    ScaledRadial gauge;
+    Linear linear;
+            
     public GaugesFrame() {
+        linear = new Linear();
+        linear.setTitle("RPM");
+        linear.setUnitString("RPMx1000");
+        linear.setSize(250,188);
+        linear.setMaxValue(14);
+        linear.setMinValue(0);
+        linear.setVisible(true);
+        
         initComponents();
-        //create object
-        gauge = new Radial();
+        //create object 
+        gauge = new ScaledRadial(1000);
         //set the title
-        gauge.setTitle("Voltage");
+        gauge.setTitle("RPM");
         //set the units
-        gauge.setUnitString("Volts");
+        gauge.setUnitString("RPMx1000");
         //set the size
-        gauge.setSize(400, 300);
+        gauge.setSize(250, 188);
         //set the max limit
-        gauge.setMaxValue(18);
+        gauge.setMaxValue(14);
         //set the min value
-        gauge.setMinValue(8);
+        gauge.setMinValue(0);
         //set the threshold value for the blinking led
         gauge.setThreshold(12);
         //how to invert the threshhold, if true: if the current value is less than the threshold set blink,
@@ -47,9 +58,9 @@ public class GaugesFrame extends javax.swing.JFrame {
         gauge.setTrackStopColor(Color.RED);
         gauge.setTrackVisible(true);
         //set the panel the gauge will go in size
-        jPanel2.setPreferredSize(new Dimension(400, 300));
+        jPanel2.setPreferredSize(new Dimension(250, 188));
         //add the gauge to the panel
-        jPanel2.add(gauge);
+        jPanel2.add(linear);
         //javadoc for SteelSeries gauges library
         //https://jar-download.com/artifacts/eu.hansolo/SteelSeries/3.9.30/documentation
         //creaters blog, he goes through everything thats available
@@ -149,11 +160,12 @@ public class GaugesFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(gauge.getValue() <= 10) {
-            gauge.setValueAnimated(15);
+        System.out.println(gauge.getValue());
+        if(linear.getValue() == (10000/1000.0)) {
+           linear.setValue(3.434);
         }
         else {
-            gauge.setValueAnimated(10);
+            linear.setValue(10);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
