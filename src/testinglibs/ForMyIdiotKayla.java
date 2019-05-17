@@ -13,7 +13,11 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.Stroke;
 import static java.awt.SystemColor.text;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.JPanel;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -37,6 +41,7 @@ public class ForMyIdiotKayla extends javax.swing.JFrame{
         
         //create drawings
         createDrawing();
+        
         
     }
     
@@ -189,6 +194,24 @@ public class ForMyIdiotKayla extends javax.swing.JFrame{
             //draw track
             drawingPanel = new Panel2(data);
             drawingPanel.repaint();
+            drawingPanel.addComponentListener(new ComponentListener() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    //puts ur code here.
+                }
+
+                @Override
+                public void componentMoved(ComponentEvent e) {
+                }
+
+                @Override
+                public void componentShown(ComponentEvent e) {
+                }
+
+                @Override
+                public void componentHidden(ComponentEvent e) {
+                }
+            });
             this.setContentPane(drawingPanel);
             pack();
             
