@@ -7,6 +7,7 @@ package testinglibs;
 
 
 import eu.hansolo.steelseries.gauges.*;
+import eu.hansolo.steelseries.tools.Orientation;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -26,9 +27,10 @@ public class GaugesFrame extends javax.swing.JFrame {
             
     public GaugesFrame() {
         linear = new Linear();
+        linear.setOrientation(Orientation.VERTICAL);
         linear.setTitle("RPM");
         linear.setUnitString("RPMx1000");
-        linear.setSize(250,188);
+        linear.setSize(100,350);
         linear.setMaxValue(14);
         linear.setMinValue(0);
         linear.setVisible(true);
@@ -58,7 +60,7 @@ public class GaugesFrame extends javax.swing.JFrame {
         gauge.setTrackStopColor(Color.RED);
         gauge.setTrackVisible(true);
         //set the panel the gauge will go in size
-        jPanel2.setPreferredSize(new Dimension(250, 188));
+        jPanel2.setPreferredSize(new Dimension(100, 350));
         //add the gauge to the panel
         jPanel2.add(linear);
         //javadoc for SteelSeries gauges library
