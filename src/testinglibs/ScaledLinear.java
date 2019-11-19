@@ -5,19 +5,15 @@
  */
 package testinglibs;
 
-import eu.hansolo.steelseries.gauges.Radial;
+import eu.hansolo.steelseries.gauges.Linear;
 
 /**
- * Automatically scales values given when provided a scale
- * This makes sure that the LCD reads out the proper value, while keeping the gauge correct as well
+ *
  * @author aribdhuka
  */
-public class ScaledRadial extends Radial implements Scaled {
+public class ScaledLinear extends Linear implements Scaled {
     
-    //the scale for this gauge
-    //so if the gauge represents 1000 per tick, the scale is 1000
     private double scale;
-    //The tag for the gauge/what it measures, ex. Time, RPM
     private String tag;
 
     public String getTag() {
@@ -27,24 +23,21 @@ public class ScaledRadial extends Radial implements Scaled {
     public void setTag(String tag) {
         this.tag = tag;
     }
-    //Scaled Radial provided a scale
-    public ScaledRadial(double scale) {
-        this.scale = scale;
-    }
     
-    //if not provided, scale is 1.
-    public ScaledRadial() {
+    public ScaledLinear() {
         scale = 1;
         tag = "";
     }
     
-    //set the scaled value, so apply the scale to the gauge and raw to the lcd
+    public ScaledLinear(double scale) {
+        this.scale = scale;
+    }
+
     public void setScaledValue(double value) {
         this.setValue(value/scale);
         this.setLcdValue(value);
     }
 
-    //getters and setters for scale
     public double getScale() {
         return scale;
     }

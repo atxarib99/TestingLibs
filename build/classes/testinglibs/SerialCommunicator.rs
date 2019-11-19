@@ -1,2 +1,0 @@
-pitsoftware.SerialCommunicator
-pitsoftware.SerialCommunicator$PortReader
